@@ -1,39 +1,22 @@
-# Instruction for setting up the development environment.
-|version  |Date       |Editor       |operation  |
-|---------|-----------|-------------|-----------|
-|1.0      |08/05/2023 |William Wang |editing    |
-## Step 1: Dev IDE
-- I would suggest use **VScode** as your IDE, but is fine if you want to use others. 
-- Use this link to find newest version of VSCode: https://code.visualstudio.com/
+# PaperDlivery
+## Branch:
+- Use **DEV** branch to merge every new feature
+- everyone creates your own branch and name it as **YourName**
 
-## Step 2: Install Node.js @ 18.16.0 LTS
+## Merge and Pull Request:
+**NOTE: Please commit your code ever time you have done some changes, Even though you haven't finish the new feature yet.**
++ Once a new feature has been developed and well-tested in your branch, you have to start a pull request to update your code to **DEV** branch. 
++ Write a brief information about your updating, such as:
+  + What the new feature is.
+  + What others need to notice.
+  + What is the important **INPUT** and **OUTPUT**.
+  + Whatevery Important you think others should know before developing based on or working with your updating.
++ Leave a message in Discord that you had a pull request to **DEV** branch, just in case someone forget to check. 
++ everyone should check the update in **DEV** branch regularly and merge the update into your branch.
 
-+ Check version if you have already installed Node.js
-+ open CMD/Terminal on your computer and type command: `node -v `
-+ if you need new install or upgrade your Node.js
-  + Use this Link: https://nodejs.org/en to download and install Node.js
-  + or you can use command: 
-    + `node cache clean -f` to clean the cache
-    + `node install -g n` the `n` module is for node version control
-    + `n lts` to install the LTS version
-    + `n 18.16.0` to install the specified version 
-+ you should able to use `npm` command now!
-  + in your CMD/Terminal you can teyp `npm -v` to check the `npm` version
-![node cammand image](./img/node-command.png)
-
-+ The version of `npm` has not yet been determined. I will update the document as development progresses.
-+ if you need to update your version of `npm`, you can use the command:
-    + `npm install npm -g` to upgrade to newest version
-    + `npm install npm@9.5.1 -g` to update to the specified version
-  
-+ **update**:
-  + I have updated my npm to newest version of **9.6.6**
-![update npm](./img/update%20npm.png)
-##Step 3: Dependency 
-
-## React
-
-
-
-## Appendix
-- You can find what have been changed on React 18: https://react.dev/blog/2022/03/08/react-18-upgrade-guide#other-breaking-changes
+## Merge and rebase 
+- you are free to use rebaes when you want to copy the **DEV** branch into your branch.
+- but **rebase** command is **NOT allowed** in **DEV** branch.
+- the **rebase** command may lost some commit history that before you merge two branch.
+- we need to keep our commit history in **DEV** branch, in case some day we need to rollback.
+![](https://pic2.zhimg.com/80/v2-73db63a5abb3cac70f913155a854cf29_720w.webp)
