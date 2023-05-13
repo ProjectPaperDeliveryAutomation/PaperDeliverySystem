@@ -9,36 +9,45 @@ import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import Groups2RoundedIcon from '@mui/icons-material/Groups2Rounded';
+import AssignmentRoundedIcon from '@mui/icons-material/AssignmentRounded';
+import PeopleAltRoundedIcon from '@mui/icons-material/PeopleAltRounded';
+import SupervisedUserCircleRoundedIcon from '@mui/icons-material/SupervisedUserCircleRounded';
+import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 
 export const mainListItems = (
     <React.Fragment>
         <ListItemButton>
             <ListItemIcon>
-                <DashboardIcon/>
+                <DashboardRoundedIcon/>
             </ListItemIcon>
             <ListItemText primary="Dashboard"/>
         </ListItemButton>
+
         <ListItemButton>
             <ListItemIcon>
-                <ShoppingCartIcon/>
+                <Groups2RoundedIcon/>
             </ListItemIcon>
             <ListItemText primary="Teams"/>
         </ListItemButton>
+
         <ListItemButton>
             <ListItemIcon>
-                <PeopleIcon/>
+                <AssignmentRoundedIcon/>
             </ListItemIcon>
             <ListItemText primary="Projects"/>
         </ListItemButton>
+
         <ListItemButton>
             <ListItemIcon>
-                <BarChartIcon/>
+                <PeopleAltRoundedIcon/>
             </ListItemIcon>
             <ListItemText primary="Students"/>
         </ListItemButton>
+
         <ListItemButton>
             <ListItemIcon>
-                <LayersIcon/>
+                <SupervisedUserCircleRoundedIcon/>
             </ListItemIcon>
             <ListItemText primary="Clients"/>
         </ListItemButton>

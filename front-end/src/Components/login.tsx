@@ -16,10 +16,20 @@ import Copyright from './copyright';
 
 const theme = createTheme();
 
+function isFormDataEmpty(formData:FormData):boolean{
+  const values = formData.values();
+  return true;
+}
+
+
 export default function SignIn() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    if(data.get('email') === "" || data.get('password') === ""){
+      alert("Please enter Email and Password!");
+    }
+
     console.log({
       email: data.get('email'),
       password: data.get('password'),
@@ -52,7 +62,7 @@ export default function SignIn() {
               id="email"
               label="Email Address"
               name="email"
-              autoComplete="email"
+              autoComplete="admin@autuni.ac.nz"
               autoFocus
             />
             <TextField
@@ -63,7 +73,7 @@ export default function SignIn() {
               label="Password"
               type="password"
               id="password"
-              autoComplete="current-password"
+              autoComplete="autopassword"
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -84,11 +94,6 @@ export default function SignIn() {
                   Forgot password?
                 </Link>
               </Grid>
-              {/* <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid> */}
             </Grid>
           </Box>
         </Box>
