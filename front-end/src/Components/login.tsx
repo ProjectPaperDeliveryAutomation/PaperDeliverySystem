@@ -13,23 +13,23 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Copyright from './copyright';
+import { useNavigate } from 'react-router-dom';
 
 const theme = createTheme();
 
-function isFormDataEmpty(formData:FormData):boolean{
-  const values = formData.values();
-  return true;
-}
-
-
 export default function SignIn() {
+  let navigateTo = useNavigate();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     if(data.get('email') === "" || data.get('password') === ""){
       alert("Please enter Email and Password!");
+    }else{
+      navigateTo('/dashboard');
     }
-
+    
+    //the console print out just use for Developing, this need to be deleted
     console.log({
       email: data.get('email'),
       password: data.get('password'),
