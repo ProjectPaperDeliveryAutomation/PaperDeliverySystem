@@ -12,8 +12,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Copyright from './copyright';
+import Copyright from '../Components/copyright';
 import { useNavigate } from 'react-router-dom';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 const theme = createTheme();
 
@@ -24,7 +26,7 @@ export default function SignIn() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     if(data.get('email') === "" || data.get('password') === ""){
-      alert("Please enter Email and Password!");
+      alert("Please check your email or password!");
     }else{
       navigateTo('/dashboard');
     }
@@ -79,6 +81,9 @@ export default function SignIn() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
+            {/* <Stack sx={{ width: '100%' }} spacing={2}>
+              <Alert severity="warning">This is a warning alert — check it out!</Alert>
+            </Stack> */}
             <Button
               type="submit"
               fullWidth
@@ -87,7 +92,7 @@ export default function SignIn() {
             >
               Sign In
             </Button>
-
+            
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

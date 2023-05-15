@@ -1,6 +1,6 @@
 import {Navigate} from 'react-router-dom'
 import React, { lazy } from 'react';
-
+import Homelayout from '../pages/homelayout'
 
 /**
  * use lazy loading to avoid load the unnecessary components 
@@ -11,8 +11,12 @@ import React, { lazy } from 'react';
 
 // import Login from '../Components/login'
 // import Dashboard from '../Components/dashboard';
-const Dashboard = lazy(()=>import('../pages/homelayout'));
+// const Dashboard = lazy(()=>import('../pages/homelayout'));
 const Login = lazy(()=>import('../pages/login'));
+const Students = lazy(()=>import('../pages/students'));
+const Teams = lazy(()=>import('../pages/teams'));
+const Projects = lazy(()=>import('../pages/projects'));
+
 
 /**
  * use the React.Suspense to show a notification that it's loading 
@@ -30,16 +34,22 @@ const routes = [
         element: <Navigate to="/login"/>
     },
     {
-        path:"/login",
-        element: withLodingComponent(<Login />)
-    },
-    {
-        path:"/dashboard",
-        element: withLodingComponent(<Dashboard />)
-    },
-    {//when user trying to open a page that not exist, then redirect to 404 page
-        path:"*",
-        element: <Navigate to="/dashboard" />
+        path:"/",
+        element: <Homelayout></Homelayout>,
+        children:[
+            {
+                path:"/students",
+                elemetn:withLodingComponent(<Students />)
+            },
+            {
+                path:"/teams",
+                elemetn:withLodingComponent(<Teams />)
+            },
+            {
+                path:"/projects",
+                elemetn:withLodingComponent(<Projects />)
+            }
+        ]
     }
 ]
 

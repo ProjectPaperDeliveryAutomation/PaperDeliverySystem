@@ -11,19 +11,17 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
-import { mainListItems } from './listItems';
-import Copyright from './copyright';
-
-// import Chart from './Chart';
-// import Deposits from './Deposits';
-// import Orders from './Orders';
+import { mainListItems, secondaryListItems } from '../Components/listItems';
+// import ListButton from '../Components/listItems'
+import StickyFooter from '../Components/stickyfooter';
+import { Outlet, useNavigate } from 'react-router-dom';
+import ListRouter from '../Components/drawerlist';
+import mainDashboard from './dashboard';
+import { Grid, Paper } from '@mui/material';
 
 const drawerWidth: number = 240;
 
@@ -81,8 +79,14 @@ function DashboardContent() {
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => {
         setOpen(!open);
+        console.log("Hide button has been pressed");
     };
 
+
+    const navigateTo = useNavigate();
+    const menuLinkClick = (event:React.MouseEvent<HTMLDivElement>) =>{
+        console.log("LInk Button has been pressed", event.currentTarget.dataset.action);
+    }
     return (
         <ThemeProvider theme={mdTheme}>
             <Box sx={{ display: 'flex' }}>
@@ -101,8 +105,8 @@ function DashboardContent() {
                             sx={{
                                 marginRight: '36px',
                                 ...(open && { display: 'none' }),
-                            }}
-                        >
+                            }}>
+
                             <MenuIcon />
                         </IconButton>
                         <Typography
@@ -114,17 +118,20 @@ function DashboardContent() {
                         >
                             Paper Delivery Dashboard
                         </Typography>
+
                         <IconButton color="inherit">
                             <Badge badgeContent={0} color="secondary">
                                 <NotificationsIcon />
                             </Badge>
                         </IconButton>
+
                         <IconButton color="inherit">
                             <Badge badgeContent={0} color="secondary">
                                 <PersonRoundedIcon />
                             </Badge>
                         </IconButton>
-                    </Toolbar> </AppBar>
+                    </Toolbar> 
+                </AppBar>
                 <Drawer variant="permanent" open={open}>
                     <Toolbar
                         sx={{
@@ -132,18 +139,19 @@ function DashboardContent() {
                             alignItems: 'center',
                             justifyContent: 'flex-end',
                             px: [1],
-                        }}
-                    >
+                        }}>
                         <IconButton onClick={toggleDrawer}>
                             <ChevronLeftIcon />
                         </IconButton>
                     </Toolbar>
                     <Divider />
-                    <List component="nav">
+                    <List component="nav" onClick={menuLinkClick}>
+                        {/* <ListRouter></ListRouter> */}
                         {mainListItems}
                         <Divider sx={{ my: 1 }} />
-                        {/* {secondaryListItems} */}
-                    </List> </Drawer>
+                        {secondaryListItems}
+                    </List> 
+                </Drawer>
                 <Box
                     component="main"
                     sx={{
@@ -156,49 +164,57 @@ function DashboardContent() {
                         overflow: 'auto',
                     }} >
                     <Toolbar />
-
-                    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-                        <Grid container spacing={3}>
-                            <Grid item xs={12} md={6} lg={6}>
-                            Teams:
-                                <Paper
-                                    sx={{
-                                        p: 2,
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        height: 240,
-                                    }}
-                                >
-                                    {/* <Chart /> */}
-                                    <p>Show Teams Infor here</p>
-                                </Paper>
-                            </Grid>
-                            <Grid item xs={12} md={6} lg={6}>
-                            Projects:
-                                <Paper
-                                    sx={{
-                                        p: 2,
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        height: 240,
-                                    }}
-                                >
-                                    {/* <Deposits /> */}
-                                     <p>Show Projects Infor</p>
-                                </Paper>
-                            </Grid>
-                            <Grid item xs={12}>
-                            Students:
-                                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                                    {/* <Orders /> */}
-                                    <p>Show Studnets Infor</p>
-                                </Paper>
-                            </Grid>
-                        </Grid>
-                        <Copyright sx={{ pt: 4 }} />
+                    {/* <Container className='container'>
+                        here to put the main content
+                        <Outlet></Outlet>
                     </Container>
+                     */}
+                         <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+        <Grid container spacing={3}>
+            <Grid item xs={12} md={6} lg={6}>
+            Teams:
+                <Paper
+                    sx={{
+                        p: 2,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        height: 240,
+                    }}
+                >
+                    {/* <Chart /> */}
+                    <p>Show Teams Infor here</p>
+                </Paper>
+            </Grid>
+            <Grid item xs={12} md={6} lg={6}>
+            Projects:
+                <Paper
+                    sx={{
+                        p: 2,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        height: 240,
+                    }}
+                >
+                    {/* <Deposits /> */}
+                     <p>Show Projects Infor</p>
+                </Paper>
+            </Grid>
+            <Grid item xs={12}>
+            Students:
+                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                    {/* <Orders /> */}
+                    <p>Show Studnets Infor</p>
+                </Paper>
+            </Grid>
+        </Grid>
+        {/* <Copyright sx={{ pt: 4 }} /> */}
+    </Container>
+
                 </Box>
+
             </Box>
+            <StickyFooter></StickyFooter>
+
         </ThemeProvider>
     );
 }

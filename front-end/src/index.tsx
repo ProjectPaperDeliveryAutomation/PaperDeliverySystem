@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import LoginPage from './Components/login';
-import Dashboard from './Components/dashboard';
+import LoginPage from './pages/login';
+import Dashboard from './pages/homelayout';
 import Router from './Router/index2'
 import {BrowserRouter} from 'react-router-dom';
+import StickyFooter from './Components/stickyfooter';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,8 +16,10 @@ root.render(
     <BrowserRouter>
       <App />
     </BrowserRouter>
+
     {/* <LoginPage /> */}
     {/* <Dashboard></Dashboard> */}
+    {/* <StickyFooter></StickyFooter> */}
   </React.StrictMode>
 );
 
